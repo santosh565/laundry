@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:laundry/screens/home/home.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const Laundry());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class Laundry extends StatelessWidget {
+  const Laundry({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
