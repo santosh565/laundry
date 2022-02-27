@@ -24,15 +24,16 @@ class _SignInState extends State<SignIn> {
       body: Container(
         padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
         child: ElevatedButton(
-            child: const Text('Sign In Anonymously'),
-            onPressed: () async {
-              var result = await _service.signInAnon();
-              if (result == null) {
-                debugPrint('error signing in');
-              }else{
-                debugPrint('signed in $result');
-              }
-            }),
+          child: const Text('Sign In Anonymously'),
+          onPressed: () async {
+            var result = await _service.signInAnon();
+            if (result == null) {
+              debugPrint('error signing in');
+            } else {
+              debugPrint('signed in $result');
+            }
+          },
+        ),
       ),
     );
   }
