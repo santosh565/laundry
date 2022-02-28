@@ -4,6 +4,12 @@ import 'package:flutter/foundation.dart';
 class AuthService {
   final _auth = FirebaseAuth.instance;
 
+  // auth change user stream
+  Stream<String?> get userUid {
+    return _auth.authStateChanges()    
+    .map(_idFromFirebaseUser);
+  }
+
   // sing in annonomously
   Future signInAnon() async {
     try {
