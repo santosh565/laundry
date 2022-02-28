@@ -8,11 +8,16 @@ class AuthService {
   Future signInAnon() async {
     try {
       final result = await _auth.signInAnonymously();
-      return result.user;
+      return _idFromFirebaseUser(result.user);
     } catch (e) {
       debugPrint(e.toString());
       return null;
     }
+  }
+
+  // create user obj based on firebase user
+  String? _idFromFirebaseUser(User? user) {
+    return user?.uid;
   }
 
   // sign in with email and password
