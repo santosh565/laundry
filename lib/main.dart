@@ -1,3 +1,4 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/cupertino.dart';
@@ -10,7 +11,12 @@ import 'services/auth.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(const Laundry());
+  runApp(
+    DevicePreview(
+      enabled: false,
+      builder: (context) => const Laundry(), // Wrap your app
+    ),
+  );
 }
 
 class Laundry extends StatelessWidget {
