@@ -10,7 +10,6 @@ class Wrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final userId = Provider.of<String?>(context);
-    debugPrint('userid $userId ');
     if (userId == null) {
       return const Center(
         child: Authenticate(),

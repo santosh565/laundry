@@ -6,8 +6,7 @@ class AuthService {
 
   // auth change user stream
   Stream<String?> get userUid {
-    return _auth.authStateChanges()    
-    .map(_idFromFirebaseUser);
+    return _auth.authStateChanges().map(_idFromFirebaseUser);
   }
 
   // sing in annonomously
@@ -29,6 +28,21 @@ class AuthService {
   // sign in with email and password
 
   // register with email and password
+  Future<User?> registerWithEmailAndPassword(
+    String email,
+    String password,
+  ) async {
+    try {
+      final result = await _auth.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      return result.user;
+    } catch (e) {
+      debugPrint(e.toString());
+      return null;
+    }
+  }
 
   // sign out
   Future signOut() async {
