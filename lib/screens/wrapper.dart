@@ -16,7 +16,7 @@ class Wrapper extends StatelessWidget {
         child: Authenticate(),
       );
     } else {
-      return const Home();
+      return Home();
     }
   }
 }

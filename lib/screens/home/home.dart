@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 
+import '../../services/auth.dart';
+
 class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
+  Home({Key? key}) : super(key: key);
+
+  final AuthService _auth = AuthService();
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +15,9 @@ class Home extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.logout),
-            onPressed: () {},
+            onPressed: () async {
+              await _auth.signOut();
+            },
           ),
         ],
       ),
