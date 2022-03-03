@@ -19,6 +19,8 @@ abstract class Routes {
       //   return CupertinoPageRoute(builder: (_) => const LoginScreen());
       case RouteName.loginScreen:
         return CupertinoPageRoute(builder: (_) => const Login());
+         case RouteName.registerScreen:
+        return CupertinoPageRoute(builder: (_) => const Register());
     
 
       default:

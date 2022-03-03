@@ -92,15 +92,15 @@ class _AuthenticateState extends State<Authenticate> {
                   MyButton(
                     text: 'Log In',
                     type: ButtonType.plain,
-                    onPressed: () {
-                      Navigator.pushNamed(context, RouteName.loginScreen);
-                    },
+                    onPressed: () =>
+                        Navigator.pushNamed(context, RouteName.loginScreen),
                   ),
                   const SizedBox(height: 20.0),
                   MyButton(
                     text: 'Create an Account',
                     type: ButtonType.primary,
-                    onPressed: () {},
+                    onPressed: () =>
+                        Navigator.pushNamed(context, RouteName.registerScreen),
                   )
                 ],
               ),
