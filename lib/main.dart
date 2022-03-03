@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'routes.dart';
 import 'screens/wrapper.dart';
 import 'services/auth.dart';
 
@@ -34,6 +35,7 @@ class Laundry extends StatelessWidget {
         darkTheme: FlexThemeData.dark(scheme: FlexScheme.bahamaBlue),
         themeMode: ThemeMode.light,
         title: 'Laundry',
+        onGenerateRoute: Routes.cupertinopageRoute,
         home: const Wrapper(),
       ),
     );

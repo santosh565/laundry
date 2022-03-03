@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import '../../services/auth.dart';
 
 class Login extends StatefulWidget {
-  const Login({Key? key,required this.toggleView}) : super(key: key);
-  final Function toggleView;
-
+  const Login({
+    Key? key,
+  }) : super(key: key);
 
   @override
   _LoginState createState() => _LoginState();
@@ -31,12 +31,6 @@ class _LoginState extends State<Login> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Login'),
-        actions: <Widget>[
-          IconButton(
-            icon: const Icon(Icons.person_add),
-            onPressed: () => widget.toggleView(),
-          ),
-        ],
       ),
       body: Container(
         padding: const EdgeInsets.all(10),

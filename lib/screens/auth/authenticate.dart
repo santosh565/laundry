@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../routes.dart';
 import '../../utils/constants.dart';
 import '../widgets/my_button.dart';
 
@@ -92,7 +92,9 @@ class _AuthenticateState extends State<Authenticate> {
                   MyButton(
                     text: 'Log In',
                     type: ButtonType.plain,
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, RouteName.loginScreen);
+                    },
                   ),
                   const SizedBox(height: 20.0),
                   MyButton(
