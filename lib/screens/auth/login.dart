@@ -148,7 +148,6 @@ class _LoginState extends State<Login> {
                               } else {
                                 debugPrint('login error');
                               }
-                              setState(() {});
                             },
                           )
                         ],

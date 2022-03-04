@@ -96,9 +96,7 @@ class _AuthenticateState extends State<Authenticate> {
                     text: 'Log In',
                     type: ButtonType.plain,
                     onPressed: () async {
-                      var response = await _service.signInAnon();
-                      debugPrint(response.toString());
-                      // Navigator.pushNamed(context, RouteName.loginScreen);
+                      Navigator.pushNamed(context, RouteName.loginScreen);
                     },
                   ),
                   const SizedBox(height: 20.0),

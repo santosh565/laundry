@@ -17,7 +17,7 @@ class Wrapper extends StatelessWidget {
       );
     } else {
       debugPrint('userId at home: $userId');
-
+      Navigator.pop(context);
       return const Home();
     }
   }
