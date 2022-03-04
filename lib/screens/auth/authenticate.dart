@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../routes.dart';
+import '../../services/auth.dart';
 import '../../utils/constants.dart';
 import '../widgets/my_button.dart';
 
@@ -13,6 +14,8 @@ class Authenticate extends StatefulWidget {
 }
 
 class _AuthenticateState extends State<Authenticate> {
+  final _service = AuthService();
+
   @override
   initState() {
     super.initState();
@@ -92,8 +95,11 @@ class _AuthenticateState extends State<Authenticate> {
                   MyButton(
                     text: 'Log In',
                     type: ButtonType.plain,
-                    onPressed: () =>
-                        Navigator.pushNamed(context, RouteName.loginScreen),
+                    onPressed: () async {
+                      var response = await _service.signInAnon();
+                      debugPrint(response.toString());
+                      // Navigator.pushNamed(context, RouteName.loginScreen);
+                    },
                   ),
                   const SizedBox(height: 20.0),
                   MyButton(

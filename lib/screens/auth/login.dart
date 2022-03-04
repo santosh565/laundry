@@ -141,17 +141,14 @@ class _LoginState extends State<Login> {
                             type: ButtonType.primary,
                             text: 'Log In',
                             onPressed: () async {
-                              var response =
-                                  await _service.logInWithEmailAndPassword(
-                                _emailController.text,
-                                _passwordController.text,
-                              );
+                              var response = await _service.signInAnon();
 
                               if (response != null) {
                                 debugPrint('login success');
                               } else {
                                 debugPrint('login error');
                               }
+                              setState(() {});
                             },
                           )
                         ],
