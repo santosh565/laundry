@@ -1,92 +1,127 @@
 import 'package:flutter/material.dart';
 
-import '../../services/auth.dart';
+import '../../shared/input_widget.dart';
+import '../../utils/constants.dart';
+import '../widgets/my_button.dart';
 
-class Login extends StatefulWidget {
-  const Login({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  _LoginState createState() => _LoginState();
-}
-
-class _LoginState extends State<Login> {
-  late final AuthService _auth;
-  late final TextEditingController _emailController;
-  late final TextEditingController _passwordController;
-
-  final _loginFormKey = GlobalKey<FormState>();
-
-  @override
-  initState() {
-    super.initState();
-    _auth = AuthService();
-    _emailController = TextEditingController();
-    _passwordController = TextEditingController();
-  }
+class Login extends StatelessWidget {
+  const Login({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Login'),
-      ),
-      body: Container(
-        padding: const EdgeInsets.all(10),
-        child: Form(
-          key: _loginFormKey,
-          child: ListView(
-            children: [
-              TextFormField(
-                controller: _emailController,
-                validator: (value) {
-                  if (value != null && value.isEmpty) {
-                    return 'Please enter email';
-                  }
-                  return null;
-                },
-                decoration: const InputDecoration(
-                  labelText: 'Email',
-                  border: OutlineInputBorder(),
+      backgroundColor: Constants.primaryColor,
+      body: SafeArea(
+        child: Stack(
+          clipBehavior: Clip.none,
+          children: [
+            Positioned(
+              right: 0.0,
+              top: -20.0,
+              child: Opacity(
+                opacity: 0.3,
+                child: Image.asset(
+                  'assets/images/washing_machine_illustration.png',
                 ),
-                keyboardType: TextInputType.emailAddress,
               ),
-              const SizedBox(height: 10),
-              TextFormField(
-                controller: _passwordController,
-                validator: (value) {
-                  if (value != null && value.isEmpty) {
-                    return 'Please enter password';
-                  }
-                  return null;
-                },
-                decoration: const InputDecoration(
-                  labelText: 'Password',
-                  border: OutlineInputBorder(),
-                ),
-                obscureText: true,
-                keyboardType: TextInputType.text,
+            ),
+            SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16.0,
+                      vertical: 15.0,
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: const Icon(
+                            Icons.arrow_back_ios,
+                            color: Colors.white,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 20.0,
+                        ),
+                        Text(
+                          'Log in to your account',
+                          style:
+                              Theme.of(context).textTheme.headline6?.copyWith(
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.white,
+                                  ),
+                        )
+                      ],
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 40.0,
+                  ),
+                  Flexible(
+                    child: Container(
+                      constraints: BoxConstraints(
+                        minHeight: MediaQuery.of(context).size.height,
+                      ),
+                      decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(30.0),
+                          topRight: Radius.circular(30.0),
+                        ),
+                        color: Colors.white,
+                      ),
+                      padding: const EdgeInsets.all(24.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          const InputWidget(
+                            topLabel: 'Email',
+                            hintText: 'Enter your email address',
+                          ),
+                          const SizedBox(
+                            height: 25.0,
+                          ),
+                          const InputWidget(
+                            topLabel: 'Password',
+                            obscureText: true,
+                            hintText: 'Enter your password',
+                          ),
+                          const SizedBox(
+                            height: 15.0,
+                          ),
+                          GestureDetector(
+                            onTap: () {},
+                            child: const Text(
+                              'Forgot Password?',
+                              textAlign: TextAlign.right,
+                              style: TextStyle(
+                                color: Constants.primaryColor,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 20.0,
+                          ),
+                          MyButton(
+                            type: ButtonType.primary,
+                            text: 'Log In',
+                            onPressed: () {},
+                          )
+                        ],
+                      ),
+                    ),
+                  )
+                ],
               ),
-            ],
-          ),
-        ),
-      ),
-      bottomNavigationBar: Container(
-        height: 60,
-        padding: const EdgeInsets.all(8),
-        child: ElevatedButton(
-          child: const Text('Login'),
-          onPressed: () {
-            if (_loginFormKey.currentState!.validate()) {
-              // var response = _auth.LoginWithEmailAndPassword(
-              //   _emailController.text,
-              //   _passwordController.text,
-              // );
-
-              // debugPrint(response.toString());
-            }
-          },
+            ),
+          ],
         ),
       ),
     );
