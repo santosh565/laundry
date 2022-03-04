@@ -5,7 +5,7 @@ import '../utils/constants.dart';
 
 class InputWidget extends StatelessWidget {
   final String hintText;
-  // final IconData prefixIcon;
+  final TextEditingController controller;
   final double height;
   final String topLabel;
   final bool obscureText;
@@ -13,7 +13,7 @@ class InputWidget extends StatelessWidget {
   const InputWidget({
     Key? key,
     required this.hintText,
-    // required this.prefixIcon,
+    required this.controller,
     this.height = 48.0,
     this.topLabel = '',
     this.obscureText = false,
@@ -32,6 +32,7 @@ class InputWidget extends StatelessWidget {
             borderRadius: BorderRadius.circular(8.0),
           ),
           child: TextFormField(
+            controller: controller,
             obscureText: obscureText,
             decoration: InputDecoration(
               // prefixIcon: prefixIcon == null

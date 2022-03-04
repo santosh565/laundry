@@ -10,19 +10,23 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.logout),
-            onPressed: () async {
-              await _auth.signOut();
-            },
+      body: Column(
+        children: [
+          AppBar(
+            title: const Text('Home'),
+            actions: [
+              IconButton(
+                icon: const Icon(Icons.logout),
+                onPressed: () async {
+                  await _auth.signOut();
+                },
+              ),
+            ],
+          ),
+          const Center(
+            child: Text('home'),
           ),
         ],
-      ),
-      body: const Center(
-        child: Text('home'),
       ),
     );
   }

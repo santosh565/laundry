@@ -1,11 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:laundry/services/auth.dart';
 
 import '../../shared/input_widget.dart';
 import '../../utils/constants.dart';
 import '../widgets/my_button.dart';
 
-class Login extends StatelessWidget {
+class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
+
+  @override
+  State<Login> createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
+  late final TextEditingController _emailController;
+
+  late final TextEditingController _passwordController;
+
+  final _service = AuthService();
+
+  @override
+  void initState() {
+    super.initState();
+    _emailController = TextEditingController();
+    _passwordController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -80,17 +106,19 @@ class Login extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
-                          const InputWidget(
+                          InputWidget(
                             topLabel: 'Email',
                             hintText: 'Enter your email address',
+                            controller: _emailController,
                           ),
                           const SizedBox(
                             height: 25.0,
                           ),
-                          const InputWidget(
+                          InputWidget(
                             topLabel: 'Password',
                             obscureText: true,
                             hintText: 'Enter your password',
+                            controller: _passwordController,
                           ),
                           const SizedBox(
                             height: 15.0,
@@ -112,7 +140,19 @@ class Login extends StatelessWidget {
                           MyButton(
                             type: ButtonType.primary,
                             text: 'Log In',
-                            onPressed: () {},
+                            onPressed: () async {
+                              var response =
+                                  await _service.logInWithEmailAndPassword(
+                                _emailController.text,
+                                _passwordController.text,
+                              );
+
+                              if (response != null) {
+                                debugPrint('login success');
+                              } else {
+                                debugPrint('login error');
+                              }
+                            },
                           )
                         ],
                       ),
