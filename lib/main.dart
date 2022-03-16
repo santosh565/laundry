@@ -3,11 +3,10 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:laundry/screens/splash_screen.dart';
+import 'package:laundry/screens/wrapper.dart';
 
 import 'routes.dart';
-import 'screens/wrapper.dart';
-import 'services/auth.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,19 +24,15 @@ class Laundry extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StreamProvider<String?>.value(
-      initialData: null,
-      value: AuthService().userUid,
-      child: MaterialApp(
-        scrollBehavior: const CupertinoScrollBehavior(),
-        debugShowCheckedModeBanner: false,
-        theme: FlexThemeData.light(scheme: FlexScheme.bahamaBlue),
-        darkTheme: FlexThemeData.dark(scheme: FlexScheme.bahamaBlue),
-        themeMode: ThemeMode.light,
-        title: 'Laundry',
-        onGenerateRoute: Routes.cupertinopageRoute,
-        home: const Wrapper(),
-      ),
+    return MaterialApp(
+      scrollBehavior: const CupertinoScrollBehavior(),
+      debugShowCheckedModeBanner: false,
+      theme: FlexThemeData.light(scheme: FlexScheme.bahamaBlue),
+      darkTheme: FlexThemeData.dark(scheme: FlexScheme.bahamaBlue),
+      themeMode: ThemeMode.light,
+      title: 'Laundry',
+      onGenerateRoute: Routes.cupertinopageRoute,
+      home: const SplashScreen(),
     );
   }
 }

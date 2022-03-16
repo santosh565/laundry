@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../routes.dart';
-import '../../services/auth.dart';
 import '../../utils/constants.dart';
 import '../widgets/my_button.dart';
 
@@ -14,8 +13,6 @@ class Authenticate extends StatefulWidget {
 }
 
 class _AuthenticateState extends State<Authenticate> {
-  final _service = AuthService();
-
   @override
   initState() {
     super.initState();

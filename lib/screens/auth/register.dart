@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../services/auth.dart';
+import 'package:laundry/repositories/auth_repository.dart';
 
 class Register extends StatefulWidget {
   const Register({
@@ -12,7 +11,7 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
-  late final AuthService _auth;
+  late final AuthRepository _auth;
   late final TextEditingController _emailController;
   late final TextEditingController _passwordController;
 
@@ -21,7 +20,7 @@ class _RegisterState extends State<Register> {
   @override
   initState() {
     super.initState();
-    _auth = AuthService();
+    _auth = AuthRepository();
     _emailController = TextEditingController();
     _passwordController = TextEditingController();
   }
@@ -80,9 +79,9 @@ class _RegisterState extends State<Register> {
           child: const Text('Register'),
           onPressed: () {
             if (_registerFormKey.currentState!.validate()) {
-              var response = _auth.registerWithEmailAndPassword(
-                _emailController.text,
-                _passwordController.text,
+              var response = _auth.register(
+                email: _emailController.text,
+                password: _passwordController.text,
               );
 
               debugPrint(response.toString());

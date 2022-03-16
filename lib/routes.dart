@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:laundry/screens/home/home.dart';
+import 'package:laundry/screens/splash_screen.dart';
 
 import 'screens/auth/auth.dart';
 import 'screens/wrapper.dart';
@@ -25,7 +26,7 @@ abstract class Routes {
         return CupertinoPageRoute(builder: (_) =>  Home());
 
       default:
-        return CupertinoPageRoute(builder: (_) => const Wrapper());
+        return CupertinoPageRoute(builder: (_) => const SplashScreen());
     }
   }
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:laundry/services/auth.dart';
+import 'package:laundry/repositories/auth_repository.dart';
 
 import '../../shared/input_widget.dart';
 import '../../utils/constants.dart';
@@ -17,7 +17,7 @@ class _LoginState extends State<Login> {
 
   late final TextEditingController _passwordController;
 
-  final _service = AuthService();
+  final _service = AuthRepository();
 
   @override
   void initState() {
