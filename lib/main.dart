@@ -1,10 +1,12 @@
 import 'package:device_preview/device_preview.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:laundry/screens/splash_screen.dart';
-import 'package:laundry/screens/wrapper.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:laundry/screens/auth/bloc/auth_bloc.dart';
+import 'package:laundry/screens/auth/login.dart';
 
 import 'routes.dart';
 
@@ -32,7 +34,10 @@ class Laundry extends StatelessWidget {
       themeMode: ThemeMode.light,
       title: 'Laundry',
       onGenerateRoute: Routes.cupertinopageRoute,
-      home: const SplashScreen(),
+      home: BlocProvider<AuthBloc>(
+        create: (context) => AuthBloc(FirebaseAuth.instance),
+        child: const Login(),
+      ),
     );
   }
 }
