@@ -15,8 +15,8 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  late final TextEditingController _emailController;
 
+  late final TextEditingController _emailController;
   late final TextEditingController _passwordController;
 
   @override
