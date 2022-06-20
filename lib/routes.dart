@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:laundry/screens/auth/authentication_screen.dart';
 
 import 'screens/auth/auth.dart';
 import 'screens/home/home.dart';
@@ -16,12 +17,14 @@ abstract class Routes {
     switch (routeSettings.name) {
       // case RouteName.loginScreen:
       //   return CupertinoPageRoute(builder: (_) => const LoginScreen());
-      case Login.routeName:
-        return CupertinoPageRoute(builder: (_) => const Login());
+      case LoginScreen.routeName:
+        return CupertinoPageRoute(builder: (_) => const LoginScreen());
       case RouteName.registerScreen:
         return CupertinoPageRoute(builder: (_) => const Register());
       case RouteName.homeScreen:
         return CupertinoPageRoute(builder: (_) => const Home());
+      case AuthenticationScreen.routeName:
+        return CupertinoPageRoute(builder: (_) => const AuthenticationScreen());
 
       default:
         return CupertinoPageRoute(builder: (_) => const SplashScreen());

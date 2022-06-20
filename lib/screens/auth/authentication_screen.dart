@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:laundry/screens/auth/login.dart';
+import 'package:laundry/screens/auth/login_screen.dart';
 
 import '../../routes.dart';
 import '../../utils/constants.dart';
 import '../widgets/my_button.dart';
 
-class Authenticate extends StatefulWidget {
-  const Authenticate({Key? key}) : super(key: key);
+class AuthenticationScreen extends StatefulWidget {
+  const AuthenticationScreen({Key? key}) : super(key: key);
+
+  static const String routeName = '/authentication';
 
   @override
-  State<Authenticate> createState() => _AuthenticateState();
+  State<AuthenticationScreen> createState() => _AuthenticationScreenState();
 }
 
-class _AuthenticateState extends State<Authenticate> {
+class _AuthenticationScreenState extends State<AuthenticationScreen> {
   @override
   initState() {
     super.initState();
@@ -94,7 +96,7 @@ class _AuthenticateState extends State<Authenticate> {
                     text: 'Log In',
                     type: ButtonType.plain,
                     onPressed: () async {
-                      Navigator.pushNamed(context, Login.routeName);
+                      Navigator.pushNamed(context, LoginScreen.routeName);
                     },
                   ),
                   const SizedBox(height: 20.0),
