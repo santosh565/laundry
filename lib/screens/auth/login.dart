@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:laundry/routes.dart';
-import 'package:laundry/screens/auth/bloc/auth_bloc.dart';
 
+import '../../routes.dart';
 import '../../shared/input_widget.dart';
 import '../../utils/constants.dart';
 import '../widgets/my_button.dart';
+import 'bloc/auth_bloc.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
+
+  static const String routeName = '/login';
 
   @override
   State<Login> createState() => _LoginState();
 }
 
 class _LoginState extends State<Login> {
-
   late final TextEditingController _emailController;
   late final TextEditingController _passwordController;
 
@@ -38,14 +39,14 @@ class _LoginState extends State<Login> {
     return BlocConsumer<AuthBloc, AuthState>(
       listener: (context, state) {
         if (state is FailureState) {
-          ScaffoldMessenger.maybeOf(context)?.showSnackBar(
+          ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(state.error),
             ),
           );
         }
         if (state is LoggedInState) {
-          ScaffoldMessenger.maybeOf(context)?.showSnackBar(
+          ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               behavior: SnackBarBehavior.floating,
               shape: RoundedRectangleBorder(
@@ -59,6 +60,9 @@ class _LoginState extends State<Login> {
             ),
           );
           Navigator.pushNamed(context, RouteName.homeScreen);
+        }
+        if (state is LoadingState) {
+          const CircularProgressIndicator();
         }
       },
       builder: (context, state) {
@@ -91,15 +95,6 @@ class _LoginState extends State<Login> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.of(context).pop();
-                              },
-                              child: const Icon(
-                                Icons.arrow_back_ios,
-                                color: Colors.white,
-                              ),
-                            ),
                             const SizedBox(
                               height: 20.0,
                             ),

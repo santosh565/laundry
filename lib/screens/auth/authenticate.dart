@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:laundry/screens/auth/login.dart';
 
 import '../../routes.dart';
 import '../../utils/constants.dart';
@@ -9,7 +10,7 @@ class Authenticate extends StatefulWidget {
   const Authenticate({Key? key}) : super(key: key);
 
   @override
-  _AuthenticateState createState() => _AuthenticateState();
+  State<Authenticate> createState() => _AuthenticateState();
 }
 
 class _AuthenticateState extends State<Authenticate> {
@@ -93,7 +94,7 @@ class _AuthenticateState extends State<Authenticate> {
                     text: 'Log In',
                     type: ButtonType.plain,
                     onPressed: () async {
-                      Navigator.pushNamed(context, RouteName.loginScreen);
+                      Navigator.pushNamed(context, Login.routeName);
                     },
                   ),
                   const SizedBox(height: 20.0),

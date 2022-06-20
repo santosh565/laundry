@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:laundry/repositories/auth_repository.dart';
+import '../../repositories/auth_repository.dart';
 
 class Register extends StatefulWidget {
   const Register({
@@ -7,7 +7,7 @@ class Register extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _RegisterState createState() => _RegisterState();
+  State<Register> createState() => _RegisterState();
 }
 
 class _RegisterState extends State<Register> {

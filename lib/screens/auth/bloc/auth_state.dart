@@ -9,6 +9,10 @@ class LoadingState extends AuthState {
   const LoadingState();
 }
 
+class InitialState extends AuthState {
+  const InitialState();
+}
+
 class LoggedInState extends AuthState {
   final User user;
 
