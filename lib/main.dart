@@ -8,6 +8,6 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(
-    const LaundryApp(), // Wrap your app
+    const LaundryApp(),
   );
 }
