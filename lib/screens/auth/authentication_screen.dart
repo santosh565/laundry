@@ -4,7 +4,7 @@ import 'package:laundry/screens/auth/login_screen.dart';
 import 'package:laundry/screens/auth/register_screen.dart';
 
 import '../../utils/constants.dart';
-import '../widgets/my_button.dart';
+import '../../widgets/my_button.dart';
 
 class AuthenticationScreen extends StatelessWidget {
   const AuthenticationScreen({Key? key}) : super(key: key);

@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:laundry/screens/auth/authentication_screen.dart';
 
 import 'screens/auth/auth.dart';
-import 'screens/home/home.dart';
+import 'screens/home/home_screen.dart';
 import 'screens/splash_screen.dart';
 
 abstract class Routes {

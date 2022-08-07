@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:laundry/screens/auth/authentication_screen.dart';
-import 'package:laundry/screens/home/home.dart';
+import 'package:laundry/screens/home/home_screen.dart';
 
 import '../utils/constants.dart';
 import 'auth/bloc/auth_bloc.dart';
