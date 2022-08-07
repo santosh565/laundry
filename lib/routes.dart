@@ -5,12 +5,6 @@ import 'screens/auth/auth.dart';
 import 'screens/home/home.dart';
 import 'screens/splash_screen.dart';
 
-class RouteName {
-  RouteName._();
-  static const String registerScreen = 'registerScreen';
-  static const String homeScreen = 'homeScreen';
-}
-
 abstract class Routes {
   static CupertinoPageRoute cupertinopageRoute(RouteSettings routeSettings) {
     // var arguments = routeSettings.arguments;
@@ -19,10 +13,10 @@ abstract class Routes {
       //   return CupertinoPageRoute(builder: (_) => const LoginScreen());
       case LoginScreen.routeName:
         return CupertinoPageRoute(builder: (_) => const LoginScreen());
-      case RouteName.registerScreen:
-        return CupertinoPageRoute(builder: (_) => const Register());
-      case RouteName.homeScreen:
-        return CupertinoPageRoute(builder: (_) => const Home());
+      case RegisterScreen.routeName:
+        return CupertinoPageRoute(builder: (_) => const RegisterScreen());
+      case HomeScreen.routeName:
+        return CupertinoPageRoute(builder: (_) => const HomeScreen());
       case AuthenticationScreen.routeName:
         return CupertinoPageRoute(builder: (_) => const AuthenticationScreen());
 

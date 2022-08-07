@@ -3,14 +3,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../auth/bloc/auth_bloc.dart';
 
-class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({Key? key}) : super(key: key);
+
+  static const routeName = '/home';
 
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AuthBloc, AuthState>(
       listener: (context, state) {
-        debugPrint('Home: $state');
+        debugPrint('HomeScreen: $state');
 
         if (state is LoadingState) {
           showDialog(
@@ -33,7 +35,7 @@ class Home extends StatelessWidget {
                         color: Colors.white,
                       ),
                       SizedBox(width: 26),
-                      Expanded(child: Text('home screen...'))
+                      Expanded(child: Text('HomeScreen screen...'))
                     ],
                   ),
                 ),
@@ -50,7 +52,7 @@ class Home extends StatelessWidget {
           body: Column(
             children: [
               AppBar(
-                title: const Text('Home'),
+                title: const Text('HomeScreen'),
                 actions: [
                   IconButton(
                     icon: const Icon(Icons.logout),
@@ -63,7 +65,7 @@ class Home extends StatelessWidget {
                 ],
               ),
               const Center(
-                child: Text('home'),
+                child: Text('HomeScreen'),
               ),
             ],
           ),

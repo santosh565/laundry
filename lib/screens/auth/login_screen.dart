@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:laundry/screens/home/home.dart';
 
-import '../../routes.dart';
 import '../../shared/input_widget.dart';
 import '../../utils/constants.dart';
 import '../widgets/my_button.dart';
@@ -59,7 +59,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
           );
-          Navigator.pushNamed(context, RouteName.homeScreen);
+          Navigator.pushNamed(context, HomeScreen.routeName);
         }
         if (state is LoadingState) {
           showDialog(

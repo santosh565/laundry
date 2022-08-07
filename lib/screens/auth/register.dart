@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
+
 import '../../repositories/auth_repository.dart';
 
-class Register extends StatefulWidget {
-  const Register({
+class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({
     Key? key,
   }) : super(key: key);
 
+  static const routeName = '/RegisterScreen';
+
   @override
-  State<Register> createState() => _RegisterState();
+  State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-class _RegisterState extends State<Register> {
+class _RegisterScreenState extends State<RegisterScreen> {
   late final AuthRepository _auth;
   late final TextEditingController _emailController;
   late final TextEditingController _passwordController;
@@ -29,7 +32,7 @@ class _RegisterState extends State<Register> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Register'),
+        title: const Text('RegisterScreen'),
         actions: const <Widget>[],
       ),
       body: Container(
