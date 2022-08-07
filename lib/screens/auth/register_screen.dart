@@ -77,8 +77,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         child: ElevatedButton(
           child: const Text('Register'),
           onPressed: () {
-            if (_registerFormKey.currentState!.validate()) {
-              // var response = _auth.register(
+            if (_registerFormKey.currentState!.validate()) {// var response = _auth.register(
               //   email: _emailController.text,
               //   password: _passwordController.text,
               // );

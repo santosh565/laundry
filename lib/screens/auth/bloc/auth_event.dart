@@ -12,11 +12,16 @@ class LoginEvent extends AuthEvent {
   const LoginEvent({required this.email, required this.password});
 }
 
-
 class LogoutEvent extends AuthEvent {
   const LogoutEvent();
 }
 
 class AppStartEvent extends AuthEvent {
   const AppStartEvent();
+}
+
+class RegisterEvent extends AuthEvent {
+  final String email;
+  final String password;
+  const RegisterEvent({required this.email, required this.password});
 }
