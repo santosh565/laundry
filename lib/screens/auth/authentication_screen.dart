@@ -6,25 +6,10 @@ import 'package:laundry/screens/auth/register.dart';
 import '../../utils/constants.dart';
 import '../widgets/my_button.dart';
 
-class AuthenticationScreen extends StatefulWidget {
+class AuthenticationScreen extends StatelessWidget {
   const AuthenticationScreen({Key? key}) : super(key: key);
 
   static const String routeName = '/authentication';
-
-  @override
-  State<AuthenticationScreen> createState() => _AuthenticationScreenState();
-}
-
-class _AuthenticationScreenState extends State<AuthenticationScreen> {
-  @override
-  initState() {
-    super.initState();
-  }
-
-  @override
-  dispose() {
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {

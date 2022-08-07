@@ -59,7 +59,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
           );
-          Navigator.pushNamed(context, HomeScreen.routeName);
+          Navigator.pushReplacementNamed(context, HomeScreen.routeName);
         }
         if (state is LoadingState) {
           showDialog(
