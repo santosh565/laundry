@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:laundry/screens/home/home_screen.dart';
+import 'package:laundry/shared/widgets/custom_loading_widget.dart';
 
-import '../../shared/input_widget.dart';
+import '../../shared/widgets/input_widget.dart';
+import '../../shared/widgets/my_button.dart';
 import '../../utils/constants.dart';
-import '../../widgets/my_button.dart';
 import 'bloc/auth_bloc.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -62,33 +63,7 @@ class _LoginScreenState extends State<LoginScreen> {
           Navigator.pushReplacementNamed(context, HomeScreen.routeName);
         }
         if (state is LoadingState) {
-          showDialog(
-            context: context,
-            barrierDismissible: false,
-            builder: (context) {
-              return Dialog(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                backgroundColor: Colors.white,
-                child: Container(
-                  margin: const EdgeInsets.all(13),
-                  padding: const EdgeInsets.all(8),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      CircularProgressIndicator(
-                        backgroundColor: Color.fromRGBO(41, 222, 146, 1),
-                        color: Colors.white,
-                      ),
-                      SizedBox(width: 26),
-                      Expanded(child: Text('login in screen'))
-                    ],
-                  ),
-                ),
-              );
-            },
-          );
+          showCustomLoadingWidget(context);
         }
       },
       builder: (context, state) {

@@ -46,19 +46,19 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
     on<RegisterEvent>((event, emit) async {
       emit(const LoadingState());
-      try {
-        final UserCredential userCredential =
-            await provider.createUserWithEmailAndPassword(
-          email: event.email,
-          password: event.password,
-        );
-        final User? user = userCredential.user;
-        if (user != null) {
-          emit(LoggedInState(user));
-        }
-      } catch (e) {
-        emit(FailureState(e.toString()));
-      }
+      // try {
+      //   final UserCredential userCredential =
+      //       await provider.createUserWithEmailAndPassword(
+      //     email: event.email,
+      //     password: event.password,
+      //   );
+      //   final User? user = userCredential.user;
+      //   if (user != null) {
+      //     emit(LoggedInState(user));
+      //   }
+      // } catch (e) {
+      //   emit(FailureState(e.toString()));
+      // }
     });
   }
 }

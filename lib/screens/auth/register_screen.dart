@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:laundry/screens/auth/bloc/auth_bloc.dart';
+
+import '../../shared/widgets/custom_loading_widget.dart';
+import '../home/home_screen.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({
@@ -29,45 +34,61 @@ class _RegisterScreenState extends State<RegisterScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('RegisterScreen'),
-        actions: const <Widget>[],
       ),
-      body: Container(
-        padding: const EdgeInsets.all(10),
-        child: Form(
-          key: _registerFormKey,
-          child: ListView(
-            children: [
-              TextFormField(
-                controller: _emailController,
-                validator: (value) {
-                  if (value != null && value.isEmpty) {
-                    return 'Please enter email';
-                  }
-                  return null;
-                },
-                decoration: const InputDecoration(
-                  labelText: 'Email',
-                  border: OutlineInputBorder(),
-                ),
-                keyboardType: TextInputType.emailAddress,
+      body: BlocListener<AuthBloc, AuthState>(
+        listener: (context, state) {
+          if (state is FailureState) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(state.error),
               ),
-              const SizedBox(height: 10),
-              TextFormField(
-                controller: _passwordController,
-                validator: (value) {
-                  if (value != null && value.isEmpty) {
-                    return 'Please enter password';
-                  }
-                  return null;
-                },
-                decoration: const InputDecoration(
-                  labelText: 'Password',
-                  border: OutlineInputBorder(),
+            );
+          }
+          if (state is LoggedInState) {
+            Navigator.of(context).pushReplacementNamed(HomeScreen.routeName);
+          }
+          if (state is LoadingState) {
+            showCustomLoadingWidget(context);
+          }
+        },
+        child: Container(
+          padding: const EdgeInsets.all(10),
+          child: Form(
+            key: _registerFormKey,
+            child: ListView(
+              children: [
+                TextFormField(
+                  controller: _emailController,
+                  validator: (value) {
+                    if (value != null && value.isEmpty) {
+                      return 'Please enter email';
+                    }
+                    return null;
+                  },
+                  decoration: const InputDecoration(
+                    labelText: 'Email',
+                    border: OutlineInputBorder(),
+                  ),
+                  keyboardType: TextInputType.emailAddress,
                 ),
-                obscureText: true,
-                keyboardType: TextInputType.text,
-              ),
-            ],
+                const SizedBox(height: 10),
+                TextFormField(
+                  controller: _passwordController,
+                  validator: (value) {
+                    if (value != null && value.isEmpty) {
+                      return 'Please enter password';
+                    }
+                    return null;
+                  },
+                  decoration: const InputDecoration(
+                    labelText: 'Password',
+                    border: OutlineInputBorder(),
+                  ),
+                  obscureText: true,
+                  keyboardType: TextInputType.text,
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -77,12 +98,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
         child: ElevatedButton(
           child: const Text('Register'),
           onPressed: () {
-            if (_registerFormKey.currentState!.validate()) {// var response = _auth.register(
-              //   email: _emailController.text,
-              //   password: _passwordController.text,
-              // );
-
-            }
+            context.read<AuthBloc>().add(
+                  RegisterEvent(
+                    email: _emailController.text,
+                    password: _passwordController.text,
+                  ),
+                );
           },
         ),
       ),
