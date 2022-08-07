@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../repositories/auth_repository.dart';
-
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({
     Key? key,
@@ -14,7 +12,6 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
-  late final AuthRepository _auth;
   late final TextEditingController _emailController;
   late final TextEditingController _passwordController;
 
@@ -23,7 +20,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
   @override
   initState() {
     super.initState();
-    _auth = AuthRepository();
     _emailController = TextEditingController();
     _passwordController = TextEditingController();
   }
@@ -82,12 +78,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
           child: const Text('Register'),
           onPressed: () {
             if (_registerFormKey.currentState!.validate()) {
-              var response = _auth.register(
-                email: _emailController.text,
-                password: _passwordController.text,
-              );
+              // var response = _auth.register(
+              //   email: _emailController.text,
+              //   password: _passwordController.text,
+              // );
 
-              debugPrint(response.toString());
             }
           },
         ),

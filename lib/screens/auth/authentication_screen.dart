@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:laundry/screens/auth/login_screen.dart';
-import 'package:laundry/screens/auth/register.dart';
+import 'package:laundry/screens/auth/register_screen.dart';
 
 import '../../utils/constants.dart';
 import '../widgets/my_button.dart';
