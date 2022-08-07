@@ -4,8 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'repositories/auth_repository.dart';
 import 'routes.dart';
-import 'screens/auth/authentication_screen.dart';
 import 'screens/auth/bloc/auth_bloc.dart';
 import 'screens/splash_screen.dart';
 
@@ -14,18 +14,29 @@ class LaundryApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<AuthBloc>(
-      create: (context) =>
-          AuthBloc(FirebaseAuth.instance)..add(const AppStartEvent()),
-      child: MaterialApp(
-        scrollBehavior: const CupertinoScrollBehavior(),
-        debugShowCheckedModeBanner: false,
-        theme: FlexThemeData.light(scheme: FlexScheme.bahamaBlue),
-        darkTheme: FlexThemeData.dark(scheme: FlexScheme.bahamaBlue),
-        themeMode: ThemeMode.light,
-        title: 'LaundryApp',
-        onGenerateRoute: Routes.cupertinopageRoute,
-        home: const SplashScreen(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<AuthBloc>(
+          create: (context) =>
+              AuthBloc(FirebaseAuth.instance)..add(const AppStartEvent()),
+        ),
+      ],
+      child: MultiRepositoryProvider(
+        providers: [
+          RepositoryProvider<AuthRepository>(
+            create: (context) => AuthRepository(),
+          ),
+        ],
+        child: MaterialApp(
+          scrollBehavior: const CupertinoScrollBehavior(),
+          debugShowCheckedModeBanner: false,
+          theme: FlexThemeData.light(scheme: FlexScheme.bahamaBlue),
+          darkTheme: FlexThemeData.dark(scheme: FlexScheme.bahamaBlue),
+          themeMode: ThemeMode.light,
+          title: 'LaundryApp',
+          onGenerateRoute: Routes.cupertinopageRoute,
+          home: const SplashScreen(),
+        ),
       ),
     );
   }

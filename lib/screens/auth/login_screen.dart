@@ -62,7 +62,33 @@ class _LoginScreenState extends State<LoginScreen> {
           Navigator.pushNamed(context, RouteName.homeScreen);
         }
         if (state is LoadingState) {
-          const CircularProgressIndicator();
+          showDialog(
+            context: context,
+            barrierDismissible: false,
+            builder: (context) {
+              return Dialog(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                backgroundColor: Colors.white,
+                child: Container(
+                  margin: const EdgeInsets.all(13),
+                  padding: const EdgeInsets.all(8),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      CircularProgressIndicator(
+                        backgroundColor: Color.fromRGBO(41, 222, 146, 1),
+                        color: Colors.white,
+                      ),
+                      SizedBox(width: 26),
+                      Expanded(child: Text('login in screen'))
+                    ],
+                  ),
+                ),
+              );
+            },
+          );
         }
       },
       builder: (context, state) {
