@@ -28,6 +28,9 @@ class SplashScreen extends StatelessWidget {
             Navigator.pushNamed(context, AuthenticationScreen.routeName);
           }
         },
+        listenWhen: (previous, current) {
+          return true;
+        },
         child: const Center(
           child: Text('Laundry'),
         ),

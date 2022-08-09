@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:laundry/logger.dart';
+import 'package:laundry/shared/widgets/custom_loading_widget.dart';
 
 import '../auth/bloc/auth_bloc.dart';
 
@@ -18,38 +19,9 @@ class HomeScreen extends StatelessWidget {
         _logger.i(state);
 
         if (state is LoadingState) {
-          showDialog(
-            context: context,
-            barrierDismissible: false,
-            builder: (context) {
-              return Dialog(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                backgroundColor: Colors.white,
-                child: Container(
-                  margin: const EdgeInsets.all(13),
-                  padding: const EdgeInsets.all(8),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      CircularProgressIndicator(
-                        backgroundColor: Color.fromRGBO(41, 222, 146, 1),
-                        color: Colors.white,
-                      ),
-                      SizedBox(width: 26),
-                      Expanded(child: Text('HomeScreen screen...'))
-                    ],
-                  ),
-                ),
-              );
-            },
-          );
+          showCustomLoadingWidget(context);
         }
         if (state is LoggedOutState) {
-          Navigator.pop(context);
-          Navigator.pop(context);
-
         }
       },
       builder: (context, state) {
@@ -57,6 +29,7 @@ class HomeScreen extends StatelessWidget {
           body: Column(
             children: [
               AppBar(
+                automaticallyImplyLeading: false,
                 title: const Text('HomeScreen'),
                 actions: [
                   IconButton(
