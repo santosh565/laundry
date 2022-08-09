@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:laundry/logger.dart';
 
 import '../auth/bloc/auth_bloc.dart';
+
+final _logger = getLogger(HomeScreen);
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -12,7 +15,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<AuthBloc, AuthState>(
       listener: (context, state) {
-        debugPrint('HomeScreen: $state');
+        _logger.i(state);
 
         if (state is LoadingState) {
           showDialog(
@@ -45,6 +48,8 @@ class HomeScreen extends StatelessWidget {
         }
         if (state is LoggedOutState) {
           Navigator.pop(context);
+          Navigator.pop(context);
+
         }
       },
       builder: (context, state) {
