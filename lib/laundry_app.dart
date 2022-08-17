@@ -23,8 +23,8 @@ class LaundryApp extends StatelessWidget {
       child: MaterialApp(
         scrollBehavior: const CupertinoScrollBehavior(),
         debugShowCheckedModeBanner: false,
-        theme: FlexThemeData.light(scheme: FlexScheme.bahamaBlue),
-        darkTheme: FlexThemeData.dark(scheme: FlexScheme.bahamaBlue),
+        theme: FlexThemeData.light(scheme: FlexScheme.hippieBlue),
+        darkTheme: FlexThemeData.dark(scheme: FlexScheme.hippieBlue),
         themeMode: ThemeMode.light,
         title: 'LaundryApp',
         onGenerateRoute: Routes.cupertinopageRoute,

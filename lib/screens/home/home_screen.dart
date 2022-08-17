@@ -45,6 +45,7 @@ class HomeScreen extends StatelessWidget {
           body: Column(
             children: [
               AppBar(
+                automaticallyImplyLeading: false,
                 title: const Text('HomeScreen'),
                 actions: [
                   IconButton(
