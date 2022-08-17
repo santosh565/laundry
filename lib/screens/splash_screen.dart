@@ -18,18 +18,21 @@ class SplashScreen extends StatelessWidget {
       color: Constants.primaryColor,
       child: BlocListener<AuthBloc, AuthState>(
         listener: (context, state) async {
-          _logger.i(state);
           if (state is LoggedInState) {
+            _logger.i(state);
+
             await Future.delayed(const Duration(seconds: 3));
             Navigator.pushReplacementNamed(context, HomeScreen.routeName);
           }
           if (state is LoggedOutState) {
+            _logger.i(state);
+
             await Future.delayed(const Duration(seconds: 3));
-            Navigator.pushNamed(context, AuthenticationScreen.routeName);
+            Navigator.pushReplacementNamed(
+              context,
+              AuthenticationScreen.routeName,
+            );
           }
-        },
-        listenWhen: (previous, current) {
-          return true;
         },
         child: const Center(
           child: Text('Laundry'),

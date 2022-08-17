@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:laundry/logger.dart';
+import 'package:laundry/screens/auth/authentication_screen.dart';
 import 'package:laundry/shared/widgets/custom_loading_widget.dart';
 
 import '../auth/bloc/auth_bloc.dart';
@@ -14,14 +15,29 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    _logger.i('build called');
+
     return BlocConsumer<AuthBloc, AuthState>(
       listener: (context, state) {
-        _logger.i(state);
-
         if (state is LoadingState) {
+          _logger.i(state);
+
           showCustomLoadingWidget(context);
         }
         if (state is LoggedOutState) {
+          _logger.i(state);
+
+          Navigator.pushReplacementNamed(
+            context,
+            AuthenticationScreen.routeName,
+          );
+          // Navigator.pop(context);
+          // ScaffoldMessenger.of(context).showSnackBar(
+          //   SnackBar(
+          //     backgroundColor: Colors.red,
+          //     content: Text(state.error),
+          //   ),
+          // );
         }
       },
       builder: (context, state) {
@@ -29,7 +45,6 @@ class HomeScreen extends StatelessWidget {
           body: Column(
             children: [
               AppBar(
-                automaticallyImplyLeading: false,
                 title: const Text('HomeScreen'),
                 actions: [
                   IconButton(

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:laundry/screens/home/home_screen.dart';
 
 import '../../logger.dart';
 import '../../shared/widgets/custom_loading_widget.dart';
 import '../../shared/widgets/input_widget.dart';
 import '../../shared/widgets/my_button.dart';
 import '../../utils/constants.dart';
+import '../home/home_screen.dart';
 import 'bloc/auth_bloc.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -42,9 +42,9 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
-        _logger.i(state);
-
         if (state is FailureState) {
+          _logger.i(state);
+
           Navigator.pop(context);
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
@@ -54,7 +54,9 @@ class _LoginScreenState extends State<LoginScreen> {
           );
         }
         if (state is LoggedInState) {
-          // Navigator.pop(context);
+          _logger.i(state);
+
+          Navigator.pop(context);
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               behavior: SnackBarBehavior.floating,
@@ -71,6 +73,8 @@ class _LoginScreenState extends State<LoginScreen> {
           Navigator.pushReplacementNamed(context, HomeScreen.routeName);
         }
         if (state is LoadingState) {
+          _logger.i(state);
+
           showCustomLoadingWidget(context);
         }
       },
